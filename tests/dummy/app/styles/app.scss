@@ -21,8 +21,9 @@
   flex-direction: column;
 }
 
-.frost-tabs.iframe {
-	.navigation {
-		display: none;
-	}
+.demo-container {
+  flex: 1;
+  height: 100%;
+  margin: 50px;
+  display: flex;
 }

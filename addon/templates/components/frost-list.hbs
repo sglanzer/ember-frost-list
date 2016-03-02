@@ -1,0 +1,12 @@
+<div class='border-top'></div>
+{{#vertical-collection
+  content=items
+  defaultHeight=50
+  alwaysUseDefaultHeight=true
+  firstReached=loadPrevious
+  lastReached=loadNext
+  as |item index|
+}}
+  {{yield item index}}
+{{/vertical-collection}}
+<div class='border-bottom'></div>

@@ -1,24 +1,42 @@
 import Ember from 'ember'
 
 export default Ember.Controller.extend({
-  selectedItems: Ember.A(),
+  listItems: Ember.A(),
+  listSelections: Ember.A(),
 
   actions: {
-    selected (attrs) {
-      if (attrs.isSelected) {
-        this.get('selectedItems').addObject(attrs.record)
-      } else {
-        this.get('selectedItems').removeObject(attrs.record)
+    loadPrevious() {
+      let first = this.get('model.first');
+      if (first <= 0) {
+        return
       }
+
+      this.store.query('list-item', {
+        pageSize: 100,
+        start: first - 100
+      }).then((newItems) => {
+        this.set('listItems', newItems.content.concat(this.get('listItems')))
+        this.set('model.first', first - 100)
+      })
     },
 
-    yEndReached () {
-      this.notifications.addNotification({
-        message: 'Scroll reached end of y axis',
-        type: 'success',
-        autoClear: true,
-        clearDuration: 2000
+    loadNext() {
+      let last = this.get('model.last');
+      this.store.query('list-item', {
+        pageSize: 100,
+        start: last
+      }).then((newItems) => {
+        this.set('listItems', this.get('listItems').concat(newItems.content))
+        this.set('model.last', last + 100)
       })
+    },
+
+    selected(attrs) {
+      if (attrs.isSelected) {
+        this.get('listSelections').addObject(attrs.record)
+      } else {
+        this.get('listSelections').removeObject(attrs.record)
+      }
     }
   }
 })

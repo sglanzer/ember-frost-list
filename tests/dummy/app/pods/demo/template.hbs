@@ -1,12 +1,16 @@
-{{#frost-list
-  class='frost-flex-1'
-  on-scroll-y-end=(action 'yEndReached')
-  on-select=(action 'selected')
-  records=model
-  selections=selectedItems
-  as |record|
-}}
-  {{!#if (eq record.record-type 'custom')}}
-    {{demo/user-list-item model=record detailLevel=activeDetailLevel}}
-  {{!/if}}
-{{/frost-list}}
+<div class='demo-container'>
+  {{#frost-list
+    class='frost-flex-1'
+    loadPrevious=(action 'loadPrevious')
+    loadNext=(action 'loadNext')
+    model=listItems
+    as |listItem|
+  }}
+    {{component 'demo/user-list-item'
+      detailLevel=activeDetailLevel
+      model=listItem
+      selections=listSelections
+      on-select=(action 'selected')
+    }}
+  {{/frost-list}}
+</div>
