@@ -1,0 +1,13 @@
+.frost-list-item.user {
+  &.large {
+    height: 125px;
+  }
+
+  .icon .frost-icon {
+    fill: #607D8B;
+  }
+}
+
+.frost-list-item.user.large {
+  flex-direction: row;
+}

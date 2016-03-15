@@ -1,6 +1,7 @@
 import Ember from 'ember'
 
 export default Ember.Controller.extend({
+  detailLevel: 'small',
   listItems: Ember.A(),
   listSelections: Ember.A(),
 

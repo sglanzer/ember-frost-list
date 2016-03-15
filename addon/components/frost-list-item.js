@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   classNameBindings: [
     'isSmall:small',
     'isLarge:large',
-    'isSelected' // TODO?
+    'isSelected:selected'
   ],
 
   isSmall: Ember.computed.equal('detailLevel', 'small'),

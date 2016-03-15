@@ -1,14 +1,64 @@
-<div class="block start frost-flex-1">
-  <div class="row">
-    <div class='select-checkbox'>
-      {{frost-list-item-selection isSelected=isSelected}}
+<div class='block start'>
+  <div class='select-checkbox'>
+    {{frost-list-item-selection isSelected=isSelected}}
+  </div>
+  <div class='icon'>
+    {{frost-icon icon='frost/user'}}
+  </div>
+  <div class='frost-flex-column'>
+    <div class='primary'>
+      Primary id {{model.id}}
     </div>
-    <div class="block column">
-      <div class='secondary'>
-      </div>
-      <div class='primary'>
-        {{model.id}}
-      </div>
+    <div class='secondary'>
+      Secondary id
     </div>
   </div>
 </div>
+<div class='block'>
+  <div class='tertiary'>
+    {{model.resource}}
+  </div>
+</div>
+<div class='block end'>
+  <div class='primary'>
+    Primary state
+  </div>
+  <div class='secondary'>
+    Secondary state
+  </div>
+</div>
+
+{{!--
+<div class='block start frost-flex-1'>
+    <div class='row'>
+        <div class='select-checkbox'>
+          {{frost-list-selection-indicator isSelected=isSelected}}
+        </div>
+        <div class='icon'>
+            <div class='alarm frost-alarm-background-{{model.severityClass}}'>
+                <div class='text'>
+                  {{model.severityAlias}}
+                </div>
+            </div>
+        </div>
+        <div class='block column'>
+            <div class='secondary'>
+              {{model.node-name}}
+            </div>
+            <div class='primary'>
+              {{model.native-condition-type}}
+            </div>
+        </div>
+    </div>
+</div>
+<div class='block frost-flex-1'>
+    <div class='tertiary'>
+      {{model.resource}}
+    </div>
+</div>
+<div class='block frost-flex-1'>
+    <div class='tertiary'>
+        <span class='label'>Info:</span> {{model.additional-text}}
+    </div>
+</div>
+--}}
