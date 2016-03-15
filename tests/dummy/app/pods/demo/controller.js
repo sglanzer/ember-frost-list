@@ -1,9 +1,20 @@
 import Ember from 'ember'
+import config from '../../config/environment'
 
 export default Ember.Controller.extend({
   detailLevel: 'small',
   listItems: Ember.A(),
   listSelections: Ember.A(),
+
+  componentPath: Ember.computed({
+    get () {
+      if (config.isFrostGuideDirectory) {
+        return 'user-list-item'
+      } else {
+        return 'demo/user-list-item'
+      }
+    }
+  }),
 
   actions: {
     loadPrevious() {
